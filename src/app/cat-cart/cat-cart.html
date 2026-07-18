@@ -1,0 +1,29 @@
+<section class="cart-summary border rounded-3 p-4 shadow-sm">
+  <h2 class="mb-4">Resumen del carrito</h2>
+
+  @if (list$ | async; as cats) {
+    @if (cats.length > 0) {
+      <ul class="list-unstyled d-flex flex-column gap-3">
+        @for (cat of cats; track cat.id) {
+          <li class="d-flex align-items-center gap-3 border rounded-3 p-3">
+            <img
+              [src]="cat.image"
+              [alt]="cat.name"
+              class="rounded-circle object-fit-cover"
+              width="60"
+              height="60"
+            />
+            <div>
+              <strong>{{ cat.name }}</strong>
+              <div class="text-muted">Día seleccionado: {{ cat.chosenDay || 'Sin día' }}</div>
+            </div>
+          </li>
+
+          <app-input-confirm-put [ID]="cat.id" [chosenDay]="cat.chosenDay"></app-input-confirm-put>
+        }
+      </ul>
+    } @else {
+      <p class="text-muted mb-0">El carrito está vacío.</p>
+    }
+  }
+</section>

@@ -1,0 +1,37 @@
+<table class="table align-middle">
+    <thead>
+        <tr>
+            <th scope="col">Imagen retrato</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Genero</th>
+            <th scope="col">Edad</th>
+            <th scope="col">Asignado</th>
+            <th scope="col">Reservar</th>
+        </tr>
+    </thead>
+    <tbody>
+        @for (cat of Cats; track cat.id) {
+            <tr>
+                <td><img [src]="cat.image" [alt]="cat.name" width="100" class="img-thumbnail rounded-3"></td>
+                <td>{{ cat.name }}</td>
+                <td>{{ cat.gender }}</td>
+                <td>{{ cat.years }}</td>
+                @if (!cat.chosenDay) {
+                    <td>
+                        <i class="bi bi-x fs-3"></i>
+                    </td>
+                    <td>
+                        <app-input-string-array [StringArray]="cat.availableDays" (StringArrayChange)="addtoCart(cat, $event)"></app-input-string-array>
+                    </td>
+                } @else {
+                    <td>
+                        <i class="bi bi-check fs-3"></i>
+                    </td>
+                    <td>
+                        <button class="btn btn-secondary" disabled>Reservado</button>
+                    </td>
+                }
+            </tr>
+        }
+    </tbody>
+</table>

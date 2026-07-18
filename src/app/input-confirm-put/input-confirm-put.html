@@ -1,0 +1,10 @@
+<button
+  type="button"
+  class="btn btn-success"
+  [class.btn-secondary]="confirmed"
+  [class.opacity-50]="confirmed"
+  [disabled]="confirmed"
+  (click)="updateCat()"
+>
+  {{ confirmed ? 'Reservado!' : 'Confirmar' }}
+</button>
