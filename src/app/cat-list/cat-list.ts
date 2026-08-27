@@ -22,7 +22,6 @@ export class CatListComponent implements OnInit {
   ngOnInit(): void {
     this.catsDataService.getCats().subscribe({
       next: (cats) => {
-        console.log('Payload recibido:', cats); 
         this.Cats = Array.isArray(cats) ? cats : (cats as any).data || [];
         this.cdr.detectChanges(); 
       },
