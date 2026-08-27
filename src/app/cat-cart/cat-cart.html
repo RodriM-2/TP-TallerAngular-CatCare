@@ -4,7 +4,7 @@
   @if (list$ | async; as cats) {
     @if (cats.length > 0) {
       <ul class="list-unstyled d-flex flex-column gap-3">
-        @for (cat of cats; track cat.id) {
+        @for (cat of cats; track $index) {
           <li class="d-flex align-items-center gap-3 border rounded-3 p-3">
             <img
               [src]="cat.image"

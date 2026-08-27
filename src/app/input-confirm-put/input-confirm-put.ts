@@ -28,6 +28,7 @@ export class InputConfirmPut {
       next: () => {
         this.confirmed = true;
         this.cdr.detectChanges();
+        window.location.reload();
       },
       error: (err) => {
         console.error('An error occurred:', err);

@@ -1,15 +1,16 @@
-import { Service } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Cat } from '../interfaces/Cat';
 import { BehaviorSubject } from 'rxjs';
 
-@Service()
+@Injectable({
+  providedIn: 'root'
+})
 export class CatCartService {
-
-    private _list: Cat[] = [];
-    list: BehaviorSubject<Cat[]> = new BehaviorSubject(this._list);
+  private _list: Cat[] = [];
+  list: BehaviorSubject<Cat[]> = new BehaviorSubject(this._list);
 
   addtoCart(cat: Cat) {
-    this._list.push({... cat});
+    this._list = [...this._list, { ...cat }];
     this.list.next(this._list);
   }
 }
